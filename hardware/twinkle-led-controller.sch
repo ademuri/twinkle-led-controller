@@ -66,30 +66,6 @@ Wire Wire Line
 	850  1450 750  1450
 Connection ~ 850  1450
 $Comp
-L Device:D_TVS D1
-U 1 1 5F41F81A
-P 1750 1000
-F 0 "D1" V 1704 1080 50  0000 L CNN
-F 1 "D_TVS" V 1795 1080 50  0000 L CNN
-F 2 "Diode_SMD:D_SMB" H 1750 1000 50  0001 C CNN
-F 3 "~" H 1750 1000 50  0001 C CNN
-F 4 "C78395" V 1750 1000 50  0001 C CNN "LCSC"
-	1    1750 1000
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GND #PWR012
-U 1 1 5F420527
-P 1750 1150
-F 0 "#PWR012" H 1750 900 50  0001 C CNN
-F 1 "GND" H 1755 977 50  0000 C CNN
-F 2 "" H 1750 1150 50  0001 C CNN
-F 3 "" H 1750 1150 50  0001 C CNN
-	1    1750 1150
-	1    0    0    -1  
-$EndComp
-Connection ~ 1150 850 
-$Comp
 L Regulator_Linear:AZ1117-3.3 U1
 U 1 1 5F420CF5
 P 1100 2100
@@ -595,79 +571,73 @@ NoConn ~ 5600 2300
 NoConn ~ 5600 2000
 NoConn ~ 5600 1600
 NoConn ~ 5600 1900
-Text Label 5650 1800 0    50   ~ 0
+Text Label 5650 2900 0    50   ~ 0
 LED0_A
 Wire Wire Line
 	5650 1800 5600 1800
-Text Label 5650 2100 0    50   ~ 0
+Text Label 5650 3000 0    50   ~ 0
 LED0_B
 Wire Wire Line
 	5650 2100 5600 2100
-Text Label 5650 2200 0    50   ~ 0
+Text Label 5650 2700 0    50   ~ 0
 LED1_A
 Wire Wire Line
 	5650 2200 5600 2200
-Text Label 5650 2400 0    50   ~ 0
-LED1_B
 Wire Wire Line
 	5650 2400 5600 2400
 Text Label 5650 2500 0    50   ~ 0
 LED2_A
 Wire Wire Line
 	5650 2500 5600 2500
-Text Label 5650 2600 0    50   ~ 0
-LED2_B
 Wire Wire Line
 	5650 2600 5600 2600
-Text Label 5650 2700 0    50   ~ 0
+Text Label 5650 1800 0    50   ~ 0
 LED3_A
 Wire Wire Line
 	5650 2700 5600 2700
-Text Label 5650 2800 0    50   ~ 0
+Text Label 5650 2400 0    50   ~ 0
 LED3_B
 Wire Wire Line
 	5650 2800 5600 2800
-Text Label 5650 2900 0    50   ~ 0
-LED4_A
 Wire Wire Line
 	5650 2900 5600 2900
-Text Label 5650 3000 0    50   ~ 0
+Text Label 4350 2700 2    50   ~ 0
 LED4_B
 Wire Wire Line
 	5650 3000 5600 3000
-Text Label 5650 3100 0    50   ~ 0
+Text Label 4350 2900 2    50   ~ 0
 LED5_A
 Wire Wire Line
 	5650 3100 5600 3100
-Text Label 5650 3200 0    50   ~ 0
+Text Label 4350 3000 2    50   ~ 0
 LED5_B
 Wire Wire Line
 	5650 3200 5600 3200
-Text Label 5650 3300 0    50   ~ 0
+Text Label 5650 2100 0    50   ~ 0
 LED6_A
 Wire Wire Line
 	5650 3300 5600 3300
-Text Label 5650 3400 0    50   ~ 0
+Text Label 4350 2800 2    50   ~ 0
 LED6_B
 Wire Wire Line
 	5650 3400 5600 3400
-Text Label 5650 3500 0    50   ~ 0
+Text Label 5650 3300 0    50   ~ 0
 LED7_A
 Wire Wire Line
 	5650 3500 5600 3500
-Text Label 4350 2600 2    50   ~ 0
+Text Label 5650 2200 0    50   ~ 0
 LED7_B
-Text Label 4350 2700 2    50   ~ 0
+Text Label 5650 3100 0    50   ~ 0
 LED8_A
-Text Label 4350 2800 2    50   ~ 0
+Text Label 5650 3200 0    50   ~ 0
 LED8_B
 Wire Wire Line
 	4350 2600 4400 2600
-Text Label 4350 2900 2    50   ~ 0
+Text Label 5650 3400 0    50   ~ 0
 LED9_A
 Wire Wire Line
 	4350 2700 4400 2700
-Text Label 4350 3000 2    50   ~ 0
+Text Label 5650 3500 0    50   ~ 0
 LED9_B
 Wire Wire Line
 	4350 2800 4400 2800
@@ -722,30 +692,30 @@ $EndComp
 $Comp
 L Device:LED D2
 U 1 1 5F464E73
-P 3800 4900
-F 0 "D2" V 3839 4782 50  0000 R CNN
-F 1 "LED" V 3748 4782 50  0000 R CNN
-F 2 "LED_SMD:LED_0603_1608Metric" H 3800 4900 50  0001 C CNN
-F 3 "~" H 3800 4900 50  0001 C CNN
-F 4 "C2286" V 3800 4900 50  0001 C CNN "LCSC"
-	1    3800 4900
+P 3800 4550
+F 0 "D2" V 3839 4432 50  0000 R CNN
+F 1 "LED" V 3748 4432 50  0000 R CNN
+F 2 "LED_SMD:LED_0603_1608Metric" H 3800 4550 50  0001 C CNN
+F 3 "~" H 3800 4550 50  0001 C CNN
+F 4 "C2286" V 3800 4550 50  0001 C CNN "LCSC"
+	1    3800 4550
 	0    -1   -1   0   
 $EndComp
-Text Label 3800 4750 2    50   ~ 0
+Text Label 3800 4400 2    50   ~ 0
 LED_BUILTIN
 $Comp
 L power:GND #PWR015
 U 1 1 5F4659BC
-P 3800 5150
-F 0 "#PWR015" H 3800 4900 50  0001 C CNN
-F 1 "GND" H 3805 4977 50  0000 C CNN
-F 2 "" H 3800 5150 50  0001 C CNN
-F 3 "" H 3800 5150 50  0001 C CNN
-	1    3800 5150
+P 3800 5100
+F 0 "#PWR015" H 3800 4850 50  0001 C CNN
+F 1 "GND" H 3805 4927 50  0000 C CNN
+F 2 "" H 3800 5100 50  0001 C CNN
+F 3 "" H 3800 5100 50  0001 C CNN
+	1    3800 5100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3800 5150 3800 5050
+	3800 4800 3800 4700
 Text Label 4350 1600 2    50   ~ 0
 AUX0
 Wire Wire Line
@@ -810,8 +780,6 @@ Wire Wire Line
 	4300 5700 4300 5850
 Wire Wire Line
 	4300 5850 4000 5850
-Wire Wire Line
-	1150 850  1750 850 
 Wire Wire Line
 	4350 2900 4400 2900
 NoConn ~ 5600 3600
@@ -978,4 +946,48 @@ Wire Wire Line
 	9000 4400 9100 4400
 Wire Wire Line
 	9000 4600 9100 4600
+Text Label 4350 2600 2    50   ~ 0
+LED4_A
+$Comp
+L Device:R R14
+U 1 1 5F43CA52
+P 3800 4950
+F 0 "R14" V 3593 4950 50  0000 C CNN
+F 1 "1k" V 3684 4950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 3730 4950 50  0001 C CNN
+F 3 "~" H 3800 4950 50  0001 C CNN
+F 4 "C11702" V 3800 4950 50  0001 C CNN "LCSC"
+	1    3800 4950
+	-1   0    0    1   
+$EndComp
+Text Label 5650 2600 0    50   ~ 0
+LED2_B
+Text Label 5650 2800 0    50   ~ 0
+LED1_B
+$Comp
+L Device:D_TVS D1
+U 1 1 5F490FDA
+P 1750 1000
+F 0 "D1" V 1704 1079 50  0000 L CNN
+F 1 "D_TVS" V 1795 1079 50  0000 L CNN
+F 2 "Diode_SMD:D_SMB" H 1750 1000 50  0001 C CNN
+F 3 "~" H 1750 1000 50  0001 C CNN
+F 4 "C78395" V 1750 1000 50  0001 C CNN "LCSC"
+	1    1750 1000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1750 850  1150 850 
+Connection ~ 1150 850 
+$Comp
+L power:GND #PWR0101
+U 1 1 5F495F62
+P 1750 1150
+F 0 "#PWR0101" H 1750 900 50  0001 C CNN
+F 1 "GND" H 1755 977 50  0000 C CNN
+F 2 "" H 1750 1150 50  0001 C CNN
+F 3 "" H 1750 1150 50  0001 C CNN
+	1    1750 1150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
