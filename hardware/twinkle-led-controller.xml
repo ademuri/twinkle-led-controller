@@ -1,0 +1,1566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/adam/hardware/twinkle-led-controller/hardware/twinkle-led-controller.sch</source>
+    <date>Mon 24 Aug 2020 10:31:29 PM MDT</date>
+    <tool>Eeschema 5.1.5+dfsg1-2build2</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>twinkle-led-controller.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/LED-output/" tstamps="/5F5EB333/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/sheet5F685DB4/" tstamps="/5F685DB4/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/sheet5F69405E/" tstamps="/5F69405E/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="5" name="/sheet5F694066/" tstamps="/5F694066/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="6" name="/sheet5F69B53B/" tstamps="/5F69B53B/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="7" name="/sheet5F6A41A2/" tstamps="/5F6A41A2/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="8" name="/sheet5F6A41AA/" tstamps="/5F6A41AA/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="9" name="/sheet5F6A41B2/" tstamps="/5F6A41B2/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="10" name="/sheet5F6A41BA/" tstamps="/5F6A41BA/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="11" name="/sheet5F6A41C2/" tstamps="/5F6A41C2/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LED-output.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="U3">
+      <value>ESP32-WROOM-32</value>
+      <footprint>RF_Module:ESP32-WROOM-32</footprint>
+      <datasheet>https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf</datasheet>
+      <libsource lib="RF_Module" part="ESP32-WROOM-32" description="RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F418EAB</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>USB_B_Micro</value>
+      <footprint>homebrew:FRAMATOME_10118194-0001LF_fixed_bridges</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="USB_B_Micro" description="USB Micro Type B connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F41DB60</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>AZ1117-3.3</value>
+      <footprint>Package_TO_SOT_SMD:SOT-223</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/AZ1117.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C6186</field>
+      </fields>
+      <libsource lib="Regulator_Linear" part="AZ1117-3.3" description="1A 20V Fixed LDO Linear Regulator, 3.3V, SOT-89/SOT-223/TO-220/TO-252/TO-263"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F420CF5</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C52923</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F4238CB</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>22uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C59461</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F424B7E</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F42C06B</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>Q_NPN_BEC</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C2150</field>
+      </fields>
+      <libsource lib="Device" part="Q_NPN_BEC" description="NPN transistor, base/emitter/collector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F439395</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>Q_NPN_BEC</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C2150</field>
+      </fields>
+      <libsource lib="Device" part="Q_NPN_BEC" description="NPN transistor, base/emitter/collector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F43978C</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25744</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F43A0F7</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25744</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F43A75F</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>4.7uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C19666</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F43E257</tstamp>
+    </comp>
+    <comp ref="SW1">
+      <value>SW_Push</value>
+      <footprint>homebrew:SW_TACTILE_5.1MM_TS-1187A-C-D-B</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C318888</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F43E634</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25744</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F43F98C</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F4435CF</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>22uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C59461</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F443F68</tstamp>
+    </comp>
+    <comp ref="H1">
+      <value>MountingHole</value>
+      <footprint>homebrew:HOLE_M4</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F4636B8</tstamp>
+    </comp>
+    <comp ref="H2">
+      <value>MountingHole</value>
+      <footprint>homebrew:HOLE_M4</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F463994</tstamp>
+    </comp>
+    <comp ref="H3">
+      <value>MountingHole</value>
+      <footprint>homebrew:HOLE_M4</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F463AD0</tstamp>
+    </comp>
+    <comp ref="H4">
+      <value>MountingHole</value>
+      <footprint>homebrew:HOLE_M4</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F463C14</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C2286</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F464E73</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_01x05</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F4DCE2A</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C11702</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F43CA52</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>D_TVS</value>
+      <footprint>Diode_SMD:D_SMB</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C78395</field>
+      </fields>
+      <libsource lib="Device" part="D_TVS" description="Bidirectional transient-voltage-suppression diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F490FDA</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>INTERFACE-CP2102-GMR(QFN28)</value>
+      <footprint>snapeda:QFN28G_0.5-5X5MM</footprint>
+      <datasheet>CP2102-GMR</datasheet>
+      <fields>
+        <field name="LCSC">C6568</field>
+      </fields>
+      <libsource lib="snapeda-CP2102" part="INTERFACE-CP2102-GMR(QFN28)" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F4A17F8</tstamp>
+    </comp>
+    <comp ref="R15">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C25744</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F502C4A</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/LED-output/" tstamps="/5F5EB333/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/LED-output/" tstamps="/5F5EB333/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/LED-output/" tstamps="/5F5EB333/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/LED-output/" tstamps="/5F5EB333/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U5">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F685DB4/" tstamps="/5F685DB4/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J4">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F685DB4/" tstamps="/5F685DB4/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F685DB4/" tstamps="/5F685DB4/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F685DB4/" tstamps="/5F685DB4/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U6">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F69405E/" tstamps="/5F69405E/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J5">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F69405E/" tstamps="/5F69405E/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F69405E/" tstamps="/5F69405E/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F69405E/" tstamps="/5F69405E/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U7">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F694066/" tstamps="/5F694066/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J6">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F694066/" tstamps="/5F694066/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C11">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F694066/" tstamps="/5F694066/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F694066/" tstamps="/5F694066/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U8">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F69B53B/" tstamps="/5F69B53B/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J7">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F69B53B/" tstamps="/5F69B53B/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C12">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F69B53B/" tstamps="/5F69B53B/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F69B53B/" tstamps="/5F69B53B/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U9">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F6A41A2/" tstamps="/5F6A41A2/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J8">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F6A41A2/" tstamps="/5F6A41A2/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C13">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F6A41A2/" tstamps="/5F6A41A2/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F6A41A2/" tstamps="/5F6A41A2/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U10">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F6A41AA/" tstamps="/5F6A41AA/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J9">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F6A41AA/" tstamps="/5F6A41AA/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C14">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F6A41AA/" tstamps="/5F6A41AA/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F6A41AA/" tstamps="/5F6A41AA/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U11">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F6A41B2/" tstamps="/5F6A41B2/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J10">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F6A41B2/" tstamps="/5F6A41B2/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C15">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F6A41B2/" tstamps="/5F6A41B2/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F6A41B2/" tstamps="/5F6A41B2/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U12">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F6A41BA/" tstamps="/5F6A41BA/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J11">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F6A41BA/" tstamps="/5F6A41BA/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C16">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F6A41BA/" tstamps="/5F6A41BA/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F6A41BA/" tstamps="/5F6A41BA/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+    <comp ref="U13">
+      <value>HT7K1201</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <datasheet>https://www.holtek.com/documents/10179/116711/HT7K1201v140.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <libsource lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew" description=""/>
+      <sheetpath names="/sheet5F6A41C2/" tstamps="/5F6A41C2/"/>
+      <tstamp>5F5EEE19</tstamp>
+    </comp>
+    <comp ref="J12">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/sheet5F6A41C2/" tstamps="/5F6A41C2/"/>
+      <tstamp>5F5EEE1F</tstamp>
+    </comp>
+    <comp ref="C17">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1525</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <sheetpath names="/sheet5F6A41C2/" tstamps="/5F6A41C2/"/>
+      <tstamp>5F5EEE31</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>10</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17903</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <sheetpath names="/sheet5F6A41C2/" tstamps="/5F6A41C2/"/>
+      <tstamp>5F5EEE47</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="Screw_Terminal_01x02">
+      <description>Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TerminalBlock*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="USB_B_Micro">
+      <aliases>
+        <alias>USB_B_Mini</alias>
+      </aliases>
+      <description>USB Micro Type B connector</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>USB*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_B_Micro</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBUS" type="power_out"/>
+        <pin num="2" name="D-" type="passive"/>
+        <pin num="3" name="D+" type="passive"/>
+        <pin num="4" name="ID" type="passive"/>
+        <pin num="5" name="GND" type="power_out"/>
+        <pin num="6" name="Shield" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x05">
+      <description>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x05</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D_TVS">
+      <description>Bidirectional transient-voltage-suppression diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_TVS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A1" type="passive"/>
+        <pin num="2" name="A2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Q_NPN_BEC">
+      <description>NPN transistor, base/emitter/collector</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_NPN_BEC</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+      </fields>
+    </libpart>
+    <libpart lib="RF_Module" part="ESP32-WROOM-32">
+      <aliases>
+        <alias>ESP32-WROOM-32D</alias>
+      </aliases>
+      <description>RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD</description>
+      <docs>https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf</docs>
+      <footprints>
+        <fp>ESP32?WROOM?32*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ESP32-WROOM-32</field>
+        <field name="Footprint">RF_Module:ESP32-WROOM-32</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VDD" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="SENSOR_VP" type="input"/>
+        <pin num="5" name="SENSOR_VN" type="input"/>
+        <pin num="6" name="IO34" type="input"/>
+        <pin num="7" name="IO35" type="input"/>
+        <pin num="8" name="IO32" type="BiDi"/>
+        <pin num="9" name="IO33" type="BiDi"/>
+        <pin num="10" name="IO25" type="BiDi"/>
+        <pin num="11" name="IO26" type="BiDi"/>
+        <pin num="12" name="IO27" type="BiDi"/>
+        <pin num="13" name="IO14" type="BiDi"/>
+        <pin num="14" name="IO12" type="BiDi"/>
+        <pin num="15" name="GND" type="passive"/>
+        <pin num="16" name="IO13" type="BiDi"/>
+        <pin num="17" name="SHD/SD2" type="BiDi"/>
+        <pin num="18" name="SWP/SD3" type="BiDi"/>
+        <pin num="19" name="SCS/CMD" type="BiDi"/>
+        <pin num="20" name="SCK/CLK" type="BiDi"/>
+        <pin num="21" name="SDO/SD0" type="BiDi"/>
+        <pin num="22" name="SDI/SD1" type="BiDi"/>
+        <pin num="23" name="IO15" type="BiDi"/>
+        <pin num="24" name="IO2" type="BiDi"/>
+        <pin num="25" name="IO0" type="BiDi"/>
+        <pin num="26" name="IO4" type="BiDi"/>
+        <pin num="27" name="IO16" type="BiDi"/>
+        <pin num="28" name="IO17" type="BiDi"/>
+        <pin num="29" name="IO5" type="BiDi"/>
+        <pin num="30" name="IO18" type="BiDi"/>
+        <pin num="31" name="IO19" type="BiDi"/>
+        <pin num="32" name="NC" type="NotConnected"/>
+        <pin num="33" name="IO21" type="BiDi"/>
+        <pin num="34" name="RXD0/IO3" type="BiDi"/>
+        <pin num="35" name="TXD0/IO1" type="BiDi"/>
+        <pin num="36" name="IO22" type="BiDi"/>
+        <pin num="37" name="IO23" type="BiDi"/>
+        <pin num="38" name="GND" type="passive"/>
+        <pin num="39" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="AZ1117-1.2">
+      <aliases>
+        <alias>AZ1117-1.5</alias>
+        <alias>AZ1117-1.8</alias>
+        <alias>AZ1117-2.5</alias>
+        <alias>AZ1117-2.85</alias>
+        <alias>AZ1117-3.3</alias>
+        <alias>AZ1117-5.0</alias>
+      </aliases>
+      <description>1A 20V Fixed LDO Linear Regulator, 1.2V, SOT-89/SOT-223/TO-220/TO-252/TO-263</description>
+      <docs>https://www.diodes.com/assets/Datasheets/AZ1117.pdf</docs>
+      <footprints>
+        <fp>SOT?223*</fp>
+        <fp>SOT?89*</fp>
+        <fp>TO?220*</fp>
+        <fp>TO?252*</fp>
+        <fp>TO?263*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AZ1117-1.2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VO" type="power_out"/>
+        <pin num="3" name="VI" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="snapeda-CP2102" part="INTERFACE-CP2102-GMR(QFN28)">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">INTERFACE-CP2102-GMR(QFN28)</field>
+        <field name="Footprint">QFN28G_0.5-5X5MM</field>
+        <field name="Datasheet">CP2102-GMR</field>
+      </fields>
+      <pins>
+        <pin num="1" name="DCD" type="BiDi"/>
+        <pin num="2" name="RI" type="BiDi"/>
+        <pin num="3" name="GND" type="BiDi"/>
+        <pin num="4" name="D+" type="BiDi"/>
+        <pin num="5" name="D-" type="BiDi"/>
+        <pin num="6" name="VDD" type="BiDi"/>
+        <pin num="7" name="REGIN" type="BiDi"/>
+        <pin num="8" name="VBUS" type="BiDi"/>
+        <pin num="9" name="~RST~" type="BiDi"/>
+        <pin num="10" name="NC" type="BiDi"/>
+        <pin num="11" name="~SUSPEND~" type="BiDi"/>
+        <pin num="12" name="SUSPEND" type="BiDi"/>
+        <pin num="13" name="NC@1" type="BiDi"/>
+        <pin num="14" name="NC@2" type="BiDi"/>
+        <pin num="15" name="NC@3" type="BiDi"/>
+        <pin num="16" name="NC@4" type="BiDi"/>
+        <pin num="17" name="NC@5" type="BiDi"/>
+        <pin num="18" name="NC/VPP" type="BiDi"/>
+        <pin num="19" name="NC@6" type="BiDi"/>
+        <pin num="20" name="NC@7" type="BiDi"/>
+        <pin num="21" name="NC@8" type="BiDi"/>
+        <pin num="22" name="NC@9" type="BiDi"/>
+        <pin num="23" name="CTS" type="BiDi"/>
+        <pin num="24" name="RTS" type="BiDi"/>
+        <pin num="25" name="RXD" type="BiDi"/>
+        <pin num="26" name="TXD" type="BiDi"/>
+        <pin num="27" name="DSR" type="BiDi"/>
+        <pin num="28" name="DTR" type="BiDi"/>
+        <pin num="29" name="GND@1" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="twinkle-led-controller-rescue" part="HT7K1201-homebrew">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">HT7K1201-homebrew</field>
+        <field name="LCSC">C182041</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OUT2" type="output"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="IN2" type="input"/>
+        <pin num="4" name="IN1" type="input"/>
+        <pin num="5" name="VDD" type="power_in"/>
+        <pin num="6" name="OUT1" type="output"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/usr/share/kicad/library/Connector.lib</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>/usr/share/kicad/library/Connector_Generic.lib</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/library/Device.lib</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>/usr/share/kicad/library/Mechanical.lib</uri>
+    </library>
+    <library logical="RF_Module">
+      <uri>/usr/share/kicad/library/RF_Module.lib</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>/usr/share/kicad/library/Regulator_Linear.lib</uri>
+    </library>
+    <library logical="Switch">
+      <uri>/usr/share/kicad/library/Switch.lib</uri>
+    </library>
+    <library logical="snapeda-CP2102">
+      <uri>/home/adam/hardware/kicad/snapeda/INTERFACE-CP2102-GMR_QFN28_.lib</uri>
+    </library>
+    <library logical="twinkle-led-controller-rescue">
+      <uri>/home/adam/hardware/twinkle-led-controller/hardware/twinkle-led-controller-rescue.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/LED2_A">
+      <node ref="U3" pin="28"/>
+      <node ref="U6" pin="4"/>
+    </net>
+    <net code="2" name="/LED4_A">
+      <node ref="U3" pin="21"/>
+      <node ref="U8" pin="4"/>
+    </net>
+    <net code="3" name="/LED4_B">
+      <node ref="U3" pin="22"/>
+      <node ref="U8" pin="3"/>
+    </net>
+    <net code="4" name="/LED3_B">
+      <node ref="U3" pin="27"/>
+      <node ref="U7" pin="3"/>
+    </net>
+    <net code="5" name="/LED3_A">
+      <node ref="U7" pin="4"/>
+      <node ref="U3" pin="26"/>
+    </net>
+    <net code="6" name="/LED2_B">
+      <node ref="U3" pin="30"/>
+      <node ref="U6" pin="3"/>
+    </net>
+    <net code="7" name="/LED1_B">
+      <node ref="U3" pin="33"/>
+      <node ref="U5" pin="3"/>
+    </net>
+    <net code="8" name="/LED1_A">
+      <node ref="U3" pin="31"/>
+      <node ref="U5" pin="4"/>
+    </net>
+    <net code="9" name="/LED0_B">
+      <node ref="U4" pin="3"/>
+      <node ref="U3" pin="37"/>
+    </net>
+    <net code="10" name="/LED6_A">
+      <node ref="U3" pin="16"/>
+      <node ref="U10" pin="4"/>
+    </net>
+    <net code="11" name="/LED8_A">
+      <node ref="U12" pin="4"/>
+      <node ref="U3" pin="10"/>
+    </net>
+    <net code="12" name="/LED8_B">
+      <node ref="U3" pin="11"/>
+      <node ref="U12" pin="3"/>
+    </net>
+    <net code="13" name="/LED7_B">
+      <node ref="U11" pin="3"/>
+      <node ref="U3" pin="13"/>
+    </net>
+    <net code="14" name="/LED7_A">
+      <node ref="U3" pin="12"/>
+      <node ref="U11" pin="4"/>
+    </net>
+    <net code="15" name="/LED6_B">
+      <node ref="U10" pin="3"/>
+      <node ref="U3" pin="17"/>
+    </net>
+    <net code="16" name="/LED0_A">
+      <node ref="U3" pin="36"/>
+      <node ref="U4" pin="4"/>
+    </net>
+    <net code="17" name="/LED5_B">
+      <node ref="U3" pin="20"/>
+      <node ref="U9" pin="3"/>
+    </net>
+    <net code="18" name="/LED5_A">
+      <node ref="U3" pin="18"/>
+      <node ref="U9" pin="4"/>
+    </net>
+    <net code="19" name="Net-(D2-Pad1)">
+      <node ref="D2" pin="1"/>
+      <node ref="R14" pin="2"/>
+    </net>
+    <net code="20" name="/AUX1">
+      <node ref="J2" pin="3"/>
+      <node ref="U3" pin="5"/>
+    </net>
+    <net code="21" name="/AUX0">
+      <node ref="J2" pin="2"/>
+      <node ref="U3" pin="4"/>
+    </net>
+    <net code="22" name="GND">
+      <node ref="C7" pin="2"/>
+      <node ref="C6" pin="2"/>
+      <node ref="U6" pin="2"/>
+      <node ref="C1" pin="1"/>
+      <node ref="C5" pin="2"/>
+      <node ref="U1" pin="1"/>
+      <node ref="U3" pin="39"/>
+      <node ref="U3" pin="38"/>
+      <node ref="J1" pin="5"/>
+      <node ref="J1" pin="6"/>
+      <node ref="U3" pin="1"/>
+      <node ref="U3" pin="15"/>
+      <node ref="J2" pin="1"/>
+      <node ref="C2" pin="2"/>
+      <node ref="SW1" pin="1"/>
+      <node ref="U11" pin="2"/>
+      <node ref="C15" pin="2"/>
+      <node ref="U10" pin="2"/>
+      <node ref="C14" pin="2"/>
+      <node ref="U9" pin="2"/>
+      <node ref="U13" pin="2"/>
+      <node ref="C17" pin="2"/>
+      <node ref="U12" pin="2"/>
+      <node ref="U2" pin="29"/>
+      <node ref="C16" pin="2"/>
+      <node ref="C10" pin="2"/>
+      <node ref="U5" pin="2"/>
+      <node ref="C9" pin="2"/>
+      <node ref="U4" pin="2"/>
+      <node ref="C8" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C13" pin="2"/>
+      <node ref="U8" pin="2"/>
+      <node ref="C12" pin="2"/>
+      <node ref="U2" pin="3"/>
+      <node ref="U7" pin="2"/>
+      <node ref="C11" pin="2"/>
+      <node ref="D1" pin="2"/>
+      <node ref="R14" pin="1"/>
+    </net>
+    <net code="23" name="/LED_BUILTIN">
+      <node ref="U3" pin="19"/>
+      <node ref="D2" pin="2"/>
+    </net>
+    <net code="24" name="/LED9_B">
+      <node ref="U3" pin="9"/>
+      <node ref="U13" pin="3"/>
+    </net>
+    <net code="25" name="Net-(U3-Pad7)">
+      <node ref="U3" pin="7"/>
+    </net>
+    <net code="26" name="Net-(U3-Pad6)">
+      <node ref="U3" pin="6"/>
+    </net>
+    <net code="27" name="+3V3">
+      <node ref="U1" pin="2"/>
+      <node ref="C6" pin="1"/>
+      <node ref="R15" pin="1"/>
+      <node ref="C7" pin="1"/>
+      <node ref="U2" pin="6"/>
+      <node ref="U2" pin="7"/>
+      <node ref="C4" pin="1"/>
+      <node ref="R3" pin="1"/>
+      <node ref="U3" pin="2"/>
+      <node ref="C2" pin="1"/>
+      <node ref="J2" pin="4"/>
+    </net>
+    <net code="28" name="+5V">
+      <node ref="D1" pin="1"/>
+      <node ref="C11" pin="1"/>
+      <node ref="U12" pin="5"/>
+      <node ref="U7" pin="5"/>
+      <node ref="C16" pin="1"/>
+      <node ref="C9" pin="1"/>
+      <node ref="U5" pin="5"/>
+      <node ref="U13" pin="5"/>
+      <node ref="C17" pin="1"/>
+      <node ref="C10" pin="1"/>
+      <node ref="U6" pin="5"/>
+      <node ref="U10" pin="5"/>
+      <node ref="C14" pin="1"/>
+      <node ref="C15" pin="1"/>
+      <node ref="J2" pin="5"/>
+      <node ref="U11" pin="5"/>
+      <node ref="U8" pin="5"/>
+      <node ref="C12" pin="1"/>
+      <node ref="C13" pin="1"/>
+      <node ref="U9" pin="5"/>
+      <node ref="J1" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="U1" pin="3"/>
+      <node ref="C8" pin="1"/>
+      <node ref="U2" pin="8"/>
+      <node ref="U4" pin="5"/>
+    </net>
+    <net code="29" name="Net-(R15-Pad2)">
+      <node ref="R15" pin="2"/>
+      <node ref="U2" pin="9"/>
+    </net>
+    <net code="30" name="Net-(U2-Pad16)">
+      <node ref="U2" pin="16"/>
+    </net>
+    <net code="32" name="Net-(U2-Pad27)">
+      <node ref="U2" pin="27"/>
+    </net>
+    <net code="33" name="Net-(U2-Pad22)">
+      <node ref="U2" pin="22"/>
+    </net>
+    <net code="34" name="Net-(U2-Pad23)">
+      <node ref="U2" pin="23"/>
+    </net>
+    <net code="35" name="Net-(U2-Pad1)">
+      <node ref="U2" pin="1"/>
+    </net>
+    <net code="36" name="Net-(U2-Pad2)">
+      <node ref="U2" pin="2"/>
+    </net>
+    <net code="37" name="Net-(U2-Pad21)">
+      <node ref="U2" pin="21"/>
+    </net>
+    <net code="38" name="Net-(U2-Pad20)">
+      <node ref="U2" pin="20"/>
+    </net>
+    <net code="39" name="Net-(U2-Pad19)">
+      <node ref="U2" pin="19"/>
+    </net>
+    <net code="40" name="Net-(U2-Pad18)">
+      <node ref="U2" pin="18"/>
+    </net>
+    <net code="41" name="Net-(U2-Pad17)">
+      <node ref="U2" pin="17"/>
+    </net>
+    <net code="42" name="Net-(U2-Pad15)">
+      <node ref="U2" pin="15"/>
+    </net>
+    <net code="43" name="Net-(U2-Pad14)">
+      <node ref="U2" pin="14"/>
+    </net>
+    <net code="44" name="Net-(U2-Pad13)">
+      <node ref="U2" pin="13"/>
+    </net>
+    <net code="45" name="Net-(U2-Pad12)">
+      <node ref="U2" pin="12"/>
+    </net>
+    <net code="46" name="Net-(U2-Pad11)">
+      <node ref="U2" pin="11"/>
+    </net>
+    <net code="47" name="Net-(U2-Pad10)">
+      <node ref="U2" pin="10"/>
+    </net>
+    <net code="48" name="/USB_DTR">
+      <node ref="R1" pin="2"/>
+      <node ref="U2" pin="28"/>
+      <node ref="Q2" pin="3"/>
+    </net>
+    <net code="49" name="/USB_TX">
+      <node ref="U3" pin="34"/>
+      <node ref="U2" pin="26"/>
+    </net>
+    <net code="50" name="/USB_RX">
+      <node ref="U3" pin="35"/>
+      <node ref="U2" pin="25"/>
+    </net>
+    <net code="51" name="/USB_RTS">
+      <node ref="U2" pin="24"/>
+      <node ref="Q1" pin="2"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="52" name="Net-(J1-Pad4)">
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="53" name="Net-(Q2-Pad1)">
+      <node ref="Q2" pin="1"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="54" name="/EN">
+      <node ref="SW1" pin="2"/>
+      <node ref="U3" pin="3"/>
+      <node ref="C5" pin="1"/>
+      <node ref="Q1" pin="3"/>
+      <node ref="R3" pin="2"/>
+    </net>
+    <net code="55" name="Net-(Q1-Pad1)">
+      <node ref="Q1" pin="1"/>
+      <node ref="R1" pin="1"/>
+    </net>
+    <net code="56" name="Net-(U3-Pad29)">
+      <node ref="U3" pin="29"/>
+    </net>
+    <net code="57" name="/IO0">
+      <node ref="U3" pin="25"/>
+      <node ref="Q2" pin="2"/>
+    </net>
+    <net code="58" name="Net-(U3-Pad24)">
+      <node ref="U3" pin="24"/>
+    </net>
+    <net code="59" name="Net-(U3-Pad23)">
+      <node ref="U3" pin="23"/>
+    </net>
+    <net code="60" name="Net-(U3-Pad14)">
+      <node ref="U3" pin="14"/>
+    </net>
+    <net code="61" name="/USB_D+">
+      <node ref="U2" pin="4"/>
+      <node ref="J1" pin="3"/>
+    </net>
+    <net code="62" name="/USB_D-">
+      <node ref="J1" pin="2"/>
+      <node ref="U2" pin="5"/>
+    </net>
+    <net code="63" name="/LED9_A">
+      <node ref="U3" pin="8"/>
+      <node ref="U13" pin="4"/>
+    </net>
+    <net code="64" name="Net-(U3-Pad32)">
+      <node ref="U3" pin="32"/>
+    </net>
+    <net code="65" name="Net-(J3-Pad1)">
+      <node ref="R4" pin="1"/>
+      <node ref="J3" pin="1"/>
+    </net>
+    <net code="66" name="Net-(R4-Pad2)">
+      <node ref="U4" pin="6"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="67" name="Net-(J3-Pad2)">
+      <node ref="J3" pin="2"/>
+      <node ref="U4" pin="1"/>
+    </net>
+    <net code="68" name="Net-(J4-Pad1)">
+      <node ref="R5" pin="1"/>
+      <node ref="J4" pin="1"/>
+    </net>
+    <net code="69" name="Net-(R5-Pad2)">
+      <node ref="U5" pin="6"/>
+      <node ref="R5" pin="2"/>
+    </net>
+    <net code="70" name="Net-(J4-Pad2)">
+      <node ref="J4" pin="2"/>
+      <node ref="U5" pin="1"/>
+    </net>
+    <net code="71" name="Net-(J5-Pad1)">
+      <node ref="R6" pin="1"/>
+      <node ref="J5" pin="1"/>
+    </net>
+    <net code="72" name="Net-(R6-Pad2)">
+      <node ref="R6" pin="2"/>
+      <node ref="U6" pin="6"/>
+    </net>
+    <net code="73" name="Net-(J5-Pad2)">
+      <node ref="J5" pin="2"/>
+      <node ref="U6" pin="1"/>
+    </net>
+    <net code="74" name="Net-(J6-Pad1)">
+      <node ref="R7" pin="1"/>
+      <node ref="J6" pin="1"/>
+    </net>
+    <net code="75" name="Net-(R7-Pad2)">
+      <node ref="R7" pin="2"/>
+      <node ref="U7" pin="6"/>
+    </net>
+    <net code="76" name="Net-(J6-Pad2)">
+      <node ref="J6" pin="2"/>
+      <node ref="U7" pin="1"/>
+    </net>
+    <net code="77" name="Net-(J7-Pad1)">
+      <node ref="R8" pin="1"/>
+      <node ref="J7" pin="1"/>
+    </net>
+    <net code="78" name="Net-(R8-Pad2)">
+      <node ref="U8" pin="6"/>
+      <node ref="R8" pin="2"/>
+    </net>
+    <net code="79" name="Net-(J7-Pad2)">
+      <node ref="J7" pin="2"/>
+      <node ref="U8" pin="1"/>
+    </net>
+    <net code="80" name="Net-(J8-Pad1)">
+      <node ref="J8" pin="1"/>
+      <node ref="R9" pin="1"/>
+    </net>
+    <net code="81" name="Net-(R9-Pad2)">
+      <node ref="R9" pin="2"/>
+      <node ref="U9" pin="6"/>
+    </net>
+    <net code="82" name="Net-(J8-Pad2)">
+      <node ref="U9" pin="1"/>
+      <node ref="J8" pin="2"/>
+    </net>
+    <net code="83" name="Net-(J9-Pad1)">
+      <node ref="J9" pin="1"/>
+      <node ref="R10" pin="1"/>
+    </net>
+    <net code="84" name="Net-(R10-Pad2)">
+      <node ref="R10" pin="2"/>
+      <node ref="U10" pin="6"/>
+    </net>
+    <net code="85" name="Net-(J9-Pad2)">
+      <node ref="U10" pin="1"/>
+      <node ref="J9" pin="2"/>
+    </net>
+    <net code="86" name="Net-(J10-Pad1)">
+      <node ref="J10" pin="1"/>
+      <node ref="R11" pin="1"/>
+    </net>
+    <net code="87" name="Net-(R11-Pad2)">
+      <node ref="R11" pin="2"/>
+      <node ref="U11" pin="6"/>
+    </net>
+    <net code="88" name="Net-(J10-Pad2)">
+      <node ref="J10" pin="2"/>
+      <node ref="U11" pin="1"/>
+    </net>
+    <net code="89" name="Net-(J11-Pad1)">
+      <node ref="J11" pin="1"/>
+      <node ref="R12" pin="1"/>
+    </net>
+    <net code="90" name="Net-(R12-Pad2)">
+      <node ref="R12" pin="2"/>
+      <node ref="U12" pin="6"/>
+    </net>
+    <net code="91" name="Net-(J11-Pad2)">
+      <node ref="U12" pin="1"/>
+      <node ref="J11" pin="2"/>
+    </net>
+    <net code="92" name="Net-(J12-Pad1)">
+      <node ref="R13" pin="1"/>
+      <node ref="J12" pin="1"/>
+    </net>
+    <net code="93" name="Net-(R13-Pad2)">
+      <node ref="R13" pin="2"/>
+      <node ref="U13" pin="6"/>
+    </net>
+    <net code="94" name="Net-(J12-Pad2)">
+      <node ref="J12" pin="2"/>
+      <node ref="U13" pin="1"/>
+    </net>
+  </nets>
+</export>
