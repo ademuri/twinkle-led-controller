@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 11
+Sheet 1 10
 Title ""
 Date ""
 Rev ""
@@ -469,10 +469,6 @@ F 3 "" H 5000 4000 50  0001 C CNN
 	1    5000 4000
 	1    0    0    -1  
 $EndComp
-NoConn ~ 5600 2300
-NoConn ~ 5600 2000
-NoConn ~ 5600 1600
-NoConn ~ 5600 1900
 Text Label 5650 2900 0    50   ~ 0
 LED0_A
 Wire Wire Line
@@ -488,63 +484,59 @@ Wire Wire Line
 Wire Wire Line
 	5650 2400 5600 2400
 Text Label 5650 2500 0    50   ~ 0
-LED2_A
+LED3_B
 Wire Wire Line
 	5650 2500 5600 2500
 Wire Wire Line
 	5650 2600 5600 2600
 Text Label 5650 1800 0    50   ~ 0
-LED3_A
+LED4_B
 Wire Wire Line
 	5650 2700 5600 2700
 Text Label 5650 2400 0    50   ~ 0
-LED3_B
+LED3_A
 Wire Wire Line
 	5650 2800 5600 2800
 Wire Wire Line
 	5650 2900 5600 2900
-Text Label 4350 2700 2    50   ~ 0
-LED4_B
+Text Label 5650 1900 0    50   ~ 0
+LED2_A
 Wire Wire Line
 	5650 3000 5600 3000
-Text Label 4350 2900 2    50   ~ 0
-LED5_A
 Wire Wire Line
 	5650 3100 5600 3100
-Text Label 4350 3000 2    50   ~ 0
-LED5_B
 Wire Wire Line
 	5650 3200 5600 3200
 Text Label 5650 2100 0    50   ~ 0
-LED6_A
+LED5_A
 Wire Wire Line
 	5650 3300 5600 3300
-Text Label 4350 2800 2    50   ~ 0
-LED6_B
+Text Label 5650 2300 0    50   ~ 0
+LED5_B
 Wire Wire Line
 	5650 3400 5600 3400
 Text Label 5650 3300 0    50   ~ 0
-LED7_A
+LED6_A
 Wire Wire Line
 	5650 3500 5600 3500
 Text Label 5650 2200 0    50   ~ 0
-LED7_B
+LED6_B
 Text Label 5650 3100 0    50   ~ 0
-LED8_A
+LED7_A
 Text Label 5650 3200 0    50   ~ 0
-LED8_B
+LED7_B
 Wire Wire Line
 	4350 2600 4400 2600
 Text Label 5650 3400 0    50   ~ 0
-LED9_A
+LED8_A
 Wire Wire Line
 	4350 2700 4400 2700
 Text Label 5650 3500 0    50   ~ 0
-LED9_B
+LED8_B
 Wire Wire Line
 	4350 2800 4400 2800
-Text Label 4350 3100 2    50   ~ 0
-LED_BUILTIN
+Text Label 5650 2000 0    50   ~ 0
+AUX_OUT
 Wire Wire Line
 	4350 3100 4400 3100
 $Comp
@@ -604,7 +596,7 @@ F 4 "C2286" V 3800 4550 50  0001 C CNN "LCSC"
 	0    -1   -1   0   
 $EndComp
 Text Label 3800 4400 2    50   ~ 0
-LED_BUILTIN
+AUX_OUT
 $Comp
 L power:GND #PWR015
 U 1 1 5F4659BC
@@ -619,13 +611,9 @@ $EndComp
 Wire Wire Line
 	3800 4800 3800 4700
 Text Label 4350 1600 2    50   ~ 0
-AUX0
+AUX_IN
 Wire Wire Line
 	4350 1600 4400 1600
-Text Label 4350 1700 2    50   ~ 0
-AUX1
-Wire Wire Line
-	4350 1700 4400 1700
 $Comp
 L Connector_Generic:Conn_01x05 J2
 U 1 1 5F4DCE2A
@@ -649,9 +637,9 @@ F 3 "" H 4000 6150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 4000 6050 0    50   ~ 0
-AUX0
+AUX_IN
 Text Label 4000 5950 0    50   ~ 0
-AUX1
+AUX_OUT
 $Comp
 L power:+5V #PWR019
 U 1 1 5F4DEDB4
@@ -832,24 +820,6 @@ Wire Wire Line
 	9000 3550 9100 3550
 Wire Wire Line
 	9000 3750 9100 3750
-Text Label 9000 4600 2    50   ~ 0
-LED9_B
-Text Label 9000 4400 2    50   ~ 0
-LED9_A
-$Sheet
-S 9100 4250 550  500 
-U 5F6A41C2
-F0 "sheet5F6A41C2" 50
-F1 "LED-output.sch" 50
-F2 "LED_A" I L 9100 4400 50 
-F3 "LED_B" I L 9100 4600 50 
-$EndSheet
-Wire Wire Line
-	9000 4400 9100 4400
-Wire Wire Line
-	9000 4600 9100 4600
-Text Label 4350 2600 2    50   ~ 0
-LED4_A
 $Comp
 L Device:R R14
 U 1 1 5F43CA52
@@ -893,7 +863,7 @@ F 3 "" H 1750 1150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L snapeda-CP2102:INTERFACE-CP2102-GMR(QFN28) U2
+L twinkle-led-controller-rescue:INTERFACE-CP2102-GMR(QFN28)-snapeda-CP2102 U2
 U 1 1 5F4A17F8
 P 2250 3900
 F 0 "U2" H 3094 3946 50  0000 L CNN
@@ -1014,4 +984,42 @@ NoConn ~ 2450 3100
 NoConn ~ 2550 3100
 NoConn ~ 2050 3100
 NoConn ~ 2450 3700
+NoConn ~ 4350 3100
+NoConn ~ 4350 3000
+NoConn ~ 4350 2900
+NoConn ~ 4350 2800
+NoConn ~ 4350 2700
+NoConn ~ 4350 2600
+Wire Wire Line
+	5650 1600 5600 1600
+Wire Wire Line
+	5650 1900 5600 1900
+Wire Wire Line
+	5650 2300 5600 2300
+Wire Wire Line
+	5600 2000 5650 2000
+Text Label 5650 1600 0    50   ~ 0
+LED4_A
+$Comp
+L Connector:Screw_Terminal_01x02 J12
+U 1 1 5F629BB0
+P 2450 850
+F 0 "J12" H 2530 842 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" H 2530 751 50  0000 L CNN
+F 2 "homebrew:Wurth_ScrewTerminal_1x02_P5.00mm_691137710002" H 2450 850 50  0001 C CNN
+F 3 "~" H 2450 850 50  0001 C CNN
+	1    2450 850 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 850  1750 850 
+Connection ~ 1750 850 
+Wire Wire Line
+	1750 1150 2200 1150
+Wire Wire Line
+	2200 1150 2200 950 
+Wire Wire Line
+	2200 950  2250 950 
+Connection ~ 1750 1150
+NoConn ~ 4400 1700
 $EndSCHEMATC
