@@ -46,39 +46,38 @@ Mode mode = Mode::kOff;
 static const char* kMdnsName = "twinkle-controller";
 static const uint32_t kRefreshMdnsDelay = 60 * 1000;
 
-// Timer stuff, used for PWM. See the ESP32 timer example:
+// Timer stuff, used for strand control. See the ESP32 timer example:
 // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESP32/examples/Timer/RepeatTimer/RepeatTimer.ino
 // Used to disable task switching during ISR
 portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
 hw_timer_t * timer = nullptr;
+
+static const double kPwmFreq = 78125;
+static const uint8_t kPwmResolution = 8;
 
 void IRAM_ATTR onTimer() {
   static uint16_t pwm_counter = 0;
   static uint8_t alternator = 0;
 
   portENTER_CRITICAL_ISR(&timerMux);
-  for (auto strand : strands) {
+  for (uint32_t i = 0; i < strands.size(); i++) {
+    Strand strand = strands[i];
     if (alternator == 0) {
-      if (strand.brightness_a > pwm_counter) {
-        digitalWrite(strand.pin_0, HIGH);
-        digitalWrite(strand.pin_1, LOW);
-      } else {
-        digitalWrite(strand.pin_0, LOW);
-        digitalWrite(strand.pin_1, LOW);
-      }
-      alternator = 1;
+      ledcDetachPin(strand.pin_1);
+      digitalWrite(strand.pin_1, LOW);
+      ledcWrite(i, strand.brightness_a);
+      ledcAttachPin(strand.pin_0, i);
     } else {
-      if (strand.brightness_b > pwm_counter) {
-        digitalWrite(strand.pin_0, LOW);
-        digitalWrite(strand.pin_1, HIGH);
-      } else {
-        digitalWrite(strand.pin_0, LOW);
-        digitalWrite(strand.pin_1, LOW);
-      }
-      alternator = 0;
+      ledcDetachPin(strand.pin_0);
+      digitalWrite(strand.pin_0, LOW);
+      ledcWrite(i, strand.brightness_b);
+      ledcAttachPin(strand.pin_1, i);
     }
   }
-  if (alternator == 1) {
+  if (alternator == 0) {
+    alternator = 1;
+  } else {
+    alternator = 0;
     pwm_counter++;
     if (pwm_counter > 255) {
       pwm_counter = 0;
@@ -94,9 +93,12 @@ void setup() {
   delay(500);
   Serial.println("");
 
-  for (auto strand : strands) {
+  for (uint32_t i = 0; i < strands.size(); i++) {
+    Strand strand = strands[i];
     pinMode(strand.pin_0, OUTPUT);
     pinMode(strand.pin_1, OUTPUT);
+    ledcSetup(i, kPwmFreq, kPwmResolution);
+    ledcAttachPin(strand.pin_0, i);
   }
 
   Serial.print("Connecting to wifi: ");
@@ -176,17 +178,15 @@ void setup() {
   server.begin();
   Serial.println("Started server.");
 
-  timer = timerBegin(0, 60, true);
+  timer = timerBegin(0, 240, true);
   timerAttachInterrupt(timer, &onTimer, true);
-  // Call every 1ms
-  timerAlarmWrite(timer, 8, /* repeat */ true);
+  // Call at 10kHz (?)
+  timerAlarmWrite(timer, 100, /* repeat */ true);
   timerAlarmEnable(timer);
 }
 
-int32_t write_nonvolatile_at = -1;
 void loop() {
   ArduinoOTA.handle();
-  // TODO: re-enable if timing works
   runner.Run();
 
   for (int i = 0; i < 255; i++) {
