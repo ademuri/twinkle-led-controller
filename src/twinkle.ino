@@ -30,9 +30,10 @@ struct Strand {
 static std::vector<Strand> strands = {
   {0, 0, 22, 23},
   {0, 0, 19, 21},
-  {0, 0, 17, 18},
-  {0, 0, 4, 16},
-  // Note: 4, 5, 6 don't work (flash pins)
+  {0, 0, 5, 18},
+  {0, 0, 16, 17},
+  {0, 0, 2, 4},
+  {0, 0, 13, 15},
   {0, 0, 27, 14},
   {0, 0, 25, 26},
   {0, 0, 32, 33},
@@ -190,13 +191,17 @@ void loop() {
   runner.Run();
 
   for (int i = 0; i < 255; i++) {
-    strands[0].brightness_a = i;
-    strands[0].brightness_b = 255 - i;
+    for (int j = 0; j < strands.size(); j++) {
+      strands[j].brightness_a = i;
+      strands[j].brightness_b = 255 - i;
+    }
     delay(10);
   }
   for (int i = 255; i > 0; i--) {
-    strands[0].brightness_a = i;
-    strands[0].brightness_b = 255 - i;
+    for (int j = 0; j < strands.size(); j++) {
+      strands[j].brightness_a = i;
+      strands[j].brightness_b = 255 - i;
+    }
     delay(10);
   }
 
