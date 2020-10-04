@@ -26,7 +26,6 @@ struct Strand {
   const int pin_1;
 };
 
-// TODO: does this need to be volatile?
 static std::vector<Strand> strands = {
   {0, 0, 22, 23},
   {0, 0, 19, 21},
@@ -55,6 +54,8 @@ hw_timer_t * timer = nullptr;
 
 static const double kPwmFreq = 78125;
 static const uint8_t kPwmResolution = 8;
+
+static const int kLedPin = 12;
 
 void IRAM_ATTR onTimer() {
   static uint16_t pwm_counter = 0;
@@ -89,9 +90,10 @@ void IRAM_ATTR onTimer() {
 }
 
 void setup() {
+  pinMode(kLedPin, OUTPUT);
+  digitalWrite(kLedPin, HIGH);
   Serial.begin(115200);
   Serial.println("Booted.");
-  delay(500);
   Serial.println("");
 
   for (uint32_t i = 0; i < strands.size(); i++) {
@@ -178,6 +180,7 @@ void setup() {
 
   server.begin();
   Serial.println("Started server.");
+  digitalWrite(kLedPin, LOW);
 
   timer = timerBegin(0, 240, true);
   timerAttachInterrupt(timer, &onTimer, true);
@@ -190,6 +193,7 @@ void loop() {
   ArduinoOTA.handle();
   runner.Run();
 
+  digitalWrite(kLedPin, HIGH);
   for (int i = 0; i < 255; i++) {
     for (int j = 0; j < strands.size(); j++) {
       strands[j].brightness_a = i;
@@ -197,6 +201,7 @@ void loop() {
     }
     delay(10);
   }
+  digitalWrite(kLedPin, LOW);
   for (int i = 255; i > 0; i--) {
     for (int j = 0; j < strands.size(); j++) {
       strands[j].brightness_a = i;
