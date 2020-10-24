@@ -5,6 +5,7 @@
 #include <esp_wifi.h>
 #include <iomanip>
 #include <periodic-runner.h>
+#include <rom/rtc.h>
 #include <string>
 #include <vector>
 
@@ -89,6 +90,13 @@ void IRAM_ATTR onTimer() {
   portEXIT_CRITICAL_ISR(&timerMux);
 }
 
+String htmlTemplateProcessor(const String &var) {
+  if (var == "RESET") {
+    return String(rtc_get_reset_reason(0)) + String(" ") + String(rtc_get_reset_reason(1));
+  }
+  return String();
+}
+
 void setup() {
   pinMode(kLedPin, OUTPUT);
   digitalWrite(kLedPin, HIGH);
@@ -167,7 +175,7 @@ void setup() {
   });
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(200, "text/html", index_html);
+    request->send_P(200, "text/html", index_html, htmlTemplateProcessor);
   });
   // Note: use POST, not PUT, so that we don't have to include the regex
   // library for URL matching, which is large

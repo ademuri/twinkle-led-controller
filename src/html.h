@@ -16,6 +16,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 </head>
 <body>
   <h3>Twinkle Controller</h3>
+  <div>Reset reason: %RESET%</div>
 </body>
 </html>)rawliteral";
 
