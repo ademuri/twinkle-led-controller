@@ -17,6 +17,16 @@ const char index_html[] PROGMEM = R"rawliteral(
 <body>
   <h3>Twinkle Controller</h3>
   <div>Reset reason: %RESET%</div>
+  <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+  <form action="/bright" method="post" target="dummyframe">
+    <button type="submit">Bright</button>
+  </form>
+  <form action="/off" method="post" target="dummyframe">
+    <button type="submit">Off</button>
+  </form>
+  <form action="/twinkle" method="post" target="dummyframe">
+    <button type="submit">Twinkle</button>
+  </form>
 </body>
 </html>)rawliteral";
 

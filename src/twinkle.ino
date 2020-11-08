@@ -16,6 +16,7 @@ enum class Mode {
   kBright,
   kDim,
   kTwinkle,
+  kHalf,
   kOff,
 };
 
@@ -28,15 +29,15 @@ struct Strand {
 };
 
 static std::vector<Strand> strands = {
-  {0, 0, 22, 23},
-  {0, 0, 19, 21},
-  {0, 0, 5, 18},
-  {0, 0, 16, 17},
-  {0, 0, 2, 4},
-  {0, 0, 13, 15},
-  {0, 0, 27, 14},
-  {0, 0, 25, 26},
-  {0, 0, 32, 33},
+  {0, 0, 13, 15}, //1
+  {0, 0, 5, 18},  //2
+  {0, 0, 22, 23}, //3
+  {0, 0, 27, 14}, //4
+  {0, 0, 17, 16}, //5
+  {0, 0, 4, 2},   //6
+  {0, 0, 19, 21}, //7
+  {0, 0, 33, 32}, //8
+  {0, 0, 26, 25}, //9
 };
 
 AsyncWebServer server(80);
@@ -180,17 +181,31 @@ void setup() {
   // Note: use POST, not PUT, so that we don't have to include the regex
   // library for URL matching, which is large
   server.on("/bright", HTTP_POST, [](AsyncWebServerRequest *request) {
+    for (int i = 0; i < strands.size(); i++) {
+        strands[i].brightness_a = 255;
+        strands[i].brightness_b = 255;
+    }
     mode = Mode::kBright;
   });
   server.on("/dim", HTTP_POST, [](AsyncWebServerRequest *request) {
     mode = Mode::kDim;
   });
   server.on("/twinkle", HTTP_POST, [](AsyncWebServerRequest *request) {
+    for (int j = 0; j < strands.size(); j++) {
+      strands[j].brightness_a = 0;
+      strands[j].brightness_b = 0;
+    }
     mode = Mode::kTwinkle;
   });
   server.on("/off", HTTP_POST, [](AsyncWebServerRequest *request) {
+    for (int j = 0; j < strands.size(); j++) {
+      strands[j].brightness_a = 0;
+      strands[j].brightness_b = 0;
+    }
     mode = Mode::kOff;
   });
+
+  mode = Mode::kHalf;
 
   server.begin();
   Serial.println("Started server.");
@@ -207,23 +222,31 @@ void loop() {
   ArduinoOTA.handle();
   runner.Run();
 
-  digitalWrite(kLedPin, HIGH);
-  for (int i = 0; i < 255; i++) {
-    for (int j = 0; j < strands.size(); j++) {
-      strands[j].brightness_a = i;
-      strands[j].brightness_b = 255 - i;
+  switch(mode) {
+    case Mode::kTwinkle:
+      twinkle();
+      break;
+    case Mode::kHalf:
+        for (int j = 0; j < strands.size(); j++) {
+          strands[j].brightness_b = 255;
+        }
+      break;
     }
-    delay(10);
-  }
-  digitalWrite(kLedPin, LOW);
-  for (int i = 255; i > 0; i--) {
-    for (int j = 0; j < strands.size(); j++) {
-      strands[j].brightness_a = i;
-      strands[j].brightness_b = 255 - i;
-    }
-    delay(10);
-  }
+}
 
-  Serial.println(millis());
+void twinkle() {
+  const uint8_t brightness = (sin(millis()/1000.0) + 1.0)/2.0 * 255;
+  for (int i = 0; i < strands.size(); i++) {
+    strands[i].brightness_a = brightness;
+    strands[i].brightness_b = 255-brightness;
+  }
+}
+
+void twinkle2() {
+  float sinValue = sin(millis()/1000.0);
+  for (int i = 0; i < strands.size(); i++) {
+    strands[i].brightness_a = sinValue > 0 ? sinValue * 255 : 0;
+    strands[i].brightness_b = sinValue > 0 ? 0 : sinValue * -255;
+  }
 }
 
