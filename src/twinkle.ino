@@ -1,7 +1,10 @@
+#include <ArduinoJson.h>
 #include <ArduinoOTA.h>
 #include <ESPAsyncWebServer.h>
 #include <ESPmDNS.h>
+#include <PubSubClient.h>
 #include <WiFi.h>
+#include <WiFiClient.h>
 #include <esp_wifi.h>
 #include <iomanip>
 #include <rom/rtc.h>
@@ -39,12 +42,16 @@ static std::vector<Strand> strands = {
   {0, 0, 26, 25}, //9
 };
 
+WiFiClient wifiClient;
+PubSubClient pubSub(wifiClient);
 AsyncWebServer server(80);
 
 Mode mode = Mode::kOff;
 
 static const char* kMdnsName = "twinkle-controller";
 static const uint32_t kRefreshMdnsDelay = 60 * 1000;
+
+static const char* kCommandTopic = "home/twinkle/command";
 
 // Timer stuff, used for strand control. See the ESP32 timer example:
 // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESP32/examples/Timer/RepeatTimer/RepeatTimer.ino
@@ -94,6 +101,41 @@ String htmlTemplateProcessor(const String &var) {
     return String(rtc_get_reset_reason(0)) + String(" ") + String(rtc_get_reset_reason(1));
   }
   return String();
+}
+
+void lightsOff() {
+  mode = Mode::kOff;
+  for (int j = 0; j < strands.size(); j++) {
+    strands[j].brightness_a = 0;
+    strands[j].brightness_b = 0;
+  }
+}
+
+void lightsBright() {
+  mode = Mode::kBright;
+  for (int i = 0; i < strands.size(); i++) {
+      strands[i].brightness_a = 255;
+      strands[i].brightness_b = 255;
+  }
+}
+
+void handleMqtt(const char* topic, byte* payload, unsigned int length) {
+  Serial.println("Received MQTT");
+  // Assume that this is the command topic, since that's the only one we subscribe to.
+  DynamicJsonDocument doc(256);
+  DeserializationError error = deserializeJson(doc, payload);
+  if (error) {
+    Serial.printf("Failed to parse JSON: %s", error.c_str());
+    return;
+  }
+
+  if (doc.containsKey("state")) {
+    if (strcmp(doc["state"], "ON") == 0) {
+      lightsBright();
+    } else if (strcmp(doc["state"], "OFF") == 0) {
+      lightsOff();
+    }
+  }
 }
 
 void setup() {
@@ -174,11 +216,7 @@ void setup() {
   // Note: use POST, not PUT, so that we don't have to include the regex
   // library for URL matching, which is large
   server.on("/bright", HTTP_POST, [](AsyncWebServerRequest *request) {
-    for (int i = 0; i < strands.size(); i++) {
-        strands[i].brightness_a = 255;
-        strands[i].brightness_b = 255;
-    }
-    mode = Mode::kBright;
+    lightsBright();
   });
   server.on("/dim", HTTP_POST, [](AsyncWebServerRequest *request) {
     mode = Mode::kDim;
@@ -191,11 +229,7 @@ void setup() {
     mode = Mode::kTwinkle;
   });
   server.on("/off", HTTP_POST, [](AsyncWebServerRequest *request) {
-    for (int j = 0; j < strands.size(); j++) {
-      strands[j].brightness_a = 0;
-      strands[j].brightness_b = 0;
-    }
-    mode = Mode::kOff;
+    lightsOff();
   });
 
   mode = Mode::kHalf;
@@ -209,10 +243,20 @@ void setup() {
   // Call at 10kHz (?)
   timerAlarmWrite(timer, 100, /* repeat */ true);
   timerAlarmEnable(timer);
+
+  // TODO: get MQTT server via MDNS rather than a hard-coded IP
+  //pubSub.setServer(MDNS.queryHost("_home-assistant._tcp"), 1883);
+  pubSub.setServer("192.168.86.222", 1883);
+  pubSub.setCallback(handleMqtt);
+  if (!pubSub.connect("twinkle")) {
+    Serial.println("Failed to init MQTT");
+  }
+  pubSub.subscribe(kCommandTopic);
 }
 
 void loop() {
   ArduinoOTA.handle();
+  pubSub.loop();
 
   switch(mode) {
     case Mode::kTwinkle:
