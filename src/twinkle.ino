@@ -40,6 +40,7 @@ static std::vector<Strand> strands = {
   {0, 0, 33, 32}, //8
   {0, 0, 26, 25}, //9
 };
+static const uint8_t kNumPwmStrands = 8;
 
 WiFiClient wifiClient;
 PubSubClient pubSub(wifiClient);
@@ -56,31 +57,53 @@ static const char* kCommandTopic = "home/twinkle/command";
 // Timer stuff, used for strand control. See the ESP32 timer example:
 // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESP32/examples/Timer/RepeatTimer/RepeatTimer.ino
 // Used to disable task switching during ISR
-portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
-hw_timer_t * timer = nullptr;
+portMUX_TYPE pwmTimerMux = portMUX_INITIALIZER_UNLOCKED;
+portMUX_TYPE bitBangTimerMux = portMUX_INITIALIZER_UNLOCKED;
+hw_timer_t * pwmTimer = nullptr;
+hw_timer_t * bitBangTimer = nullptr;
 
 static const double kPwmFreq = 78125;
+//static const double kPwmFreq = 78125.0 / 4.0;
 static const uint8_t kPwmResolution = 8;
 
 static const int kLedPin = 12;
 
-void IRAM_ATTR onTimer() {
+void IRAM_ATTR updatePwmLeds() {
+  static uint8_t alternator = 0;
+
+  portENTER_CRITICAL_ISR(&pwmTimerMux);
+  for (uint32_t i = 0; i < kNumPwmStrands; i++) {
+    Strand strand = strands[i];
+    if (alternator == 0) {
+      ledcWrite(i, 0);
+      ledcWrite(kNumPwmStrands + i, strand.brightness_b);
+    } else {
+      ledcWrite(kNumPwmStrands + i, 0);
+      ledcWrite(i, strand.brightness_a);
+    }
+  }
+  if (alternator == 0) {
+    alternator = 1;
+  } else {
+    alternator = 0;
+  }
+
+  portEXIT_CRITICAL_ISR(&pwmTimerMux);
+}
+
+void IRAM_ATTR updateBitBangLeds() {
   static uint16_t pwm_counter = 0;
   static uint8_t alternator = 0;
 
-  portENTER_CRITICAL_ISR(&timerMux);
-  for (uint32_t i = 0; i < strands.size(); i++) {
+  portENTER_CRITICAL_ISR(&bitBangTimerMux);
+  for (uint32_t i = kNumPwmStrands; i < strands.size(); i++) {
     Strand strand = strands[i];
     if (alternator == 0) {
-      ledcDetachPin(strand.pin_1);
-      digitalWrite(strand.pin_1, LOW);
-      ledcWrite(i, strand.brightness_a);
-      ledcAttachPin(strand.pin_0, i);
-    } else {
-      ledcDetachPin(strand.pin_0);
       digitalWrite(strand.pin_0, LOW);
-      ledcWrite(i, strand.brightness_b);
-      ledcAttachPin(strand.pin_1, i);
+      digitalWrite(strand.pin_1, pwm_counter < strands[i].brightness_b);
+    } else {
+      digitalWrite(strand.pin_1, LOW);
+      digitalWrite(strand.pin_0, pwm_counter < strands[i].brightness_a);
     }
   }
   if (alternator == 0) {
@@ -93,7 +116,7 @@ void IRAM_ATTR onTimer() {
     }
   }
 
-  portEXIT_CRITICAL_ISR(&timerMux);
+  portEXIT_CRITICAL_ISR(&bitBangTimerMux);
 }
 
 String htmlTemplateProcessor(const String &var) {
@@ -145,18 +168,30 @@ void handleMqtt(const char* topic, byte* payload, unsigned int length) {
 }
 
 void setup() {
+  // Note: setting the frequency in platformio.ini does nothing.
+  setCpuFrequencyMhz(240);
+
   pinMode(kLedPin, OUTPUT);
   digitalWrite(kLedPin, HIGH);
   Serial.begin(115200);
   Serial.println("Booted.");
   Serial.println("");
 
-  for (uint32_t i = 0; i < strands.size(); i++) {
+  for (uint32_t i = 0; i < kNumPwmStrands; i++) {
     Strand strand = strands[i];
     pinMode(strand.pin_0, OUTPUT);
     pinMode(strand.pin_1, OUTPUT);
     ledcSetup(i, kPwmFreq, kPwmResolution);
     ledcAttachPin(strand.pin_0, i);
+    ledcSetup(kNumPwmStrands + i, kPwmFreq, kPwmResolution);
+    ledcAttachPin(strand.pin_1, kNumPwmStrands + i);
+  }
+  for (uint32_t i = kNumPwmStrands; i < strands.size(); i++) {
+    Strand strand = strands[i];
+    pinMode(strand.pin_0, OUTPUT);
+    digitalWrite(strand.pin_0, LOW);
+    pinMode(strand.pin_1, OUTPUT);
+    digitalWrite(strand.pin_1, LOW);
   }
 
   Serial.print("Connecting to wifi: ");
@@ -175,7 +210,8 @@ void setup() {
   ArduinoOTA
     .onStart([]() {
       // This interrupt interferes with the update process
-      timerAlarmDisable(timer);
+      timerAlarmDisable(pwmTimer);
+      timerAlarmDisable(bitBangTimer);
 
       String type;
       if (ArduinoOTA.getCommand() == U_FLASH) {
@@ -196,7 +232,8 @@ void setup() {
     });
   ArduinoOTA
     .onError([](ota_error_t error) {
-      timerAlarmEnable(timer);
+      timerAlarmEnable(pwmTimer);
+      timerAlarmEnable(bitBangTimer);
 
       Serial.printf("Error[%u]: ", error);
       if (error == OTA_AUTH_ERROR) Serial.println("Auth Failed");
@@ -237,11 +274,19 @@ void setup() {
   Serial.println("Started server.");
   digitalWrite(kLedPin, LOW);
 
-  timer = timerBegin(0, 240, true);
-  timerAttachInterrupt(timer, &onTimer, true);
-  // Call at 10kHz (?)
-  timerAlarmWrite(timer, 100, /* repeat */ true);
-  timerAlarmEnable(timer);
+  pwmTimer = timerBegin(0, 240, true);
+  timerAttachInterrupt(pwmTimer, &updatePwmLeds, true);
+  // Call at 5kHz
+  timerAlarmWrite(pwmTimer, 200, /* repeat */ true);
+  timerAlarmEnable(pwmTimer);
+
+  // Note: 230 is relatively prime to 240, so that the two interrupts don't
+  // interfere with each other as much.
+  bitBangTimer = timerBegin(1, 230, true);
+  timerAttachInterrupt(bitBangTimer, &updateBitBangLeds, true);
+  // Call at ~100kHz
+  timerAlarmWrite(bitBangTimer, 10, /* repeat */ true);
+  timerAlarmEnable(bitBangTimer);
 
   // TODO: get MQTT server via MDNS rather than a hard-coded IP
   //pubSub.setServer(MDNS.queryHost("_home-assistant._tcp"), 1883);
@@ -283,7 +328,7 @@ void loop() {
 }
 
 void twinkle() {
-  const uint8_t brightness = (sin(millis()/1000.0) + 1.0)/2.0 * 255;
+  const uint8_t brightness = (sin(millis()/1000.0) + 1.0)/2.0 * 256;
   for (int i = 0; i < strands.size(); i++) {
     strands[i].brightness_a = brightness;
     strands[i].brightness_b = 255-brightness;
