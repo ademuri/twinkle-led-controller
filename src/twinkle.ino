@@ -4,7 +4,6 @@
 #include <WiFi.h>
 #include <esp_wifi.h>
 #include <iomanip>
-#include <periodic-runner.h>
 #include <rom/rtc.h>
 #include <string>
 #include <vector>
@@ -41,7 +40,6 @@ static std::vector<Strand> strands = {
 };
 
 AsyncWebServer server(80);
-PeriodicRunner runner;
 
 Mode mode = Mode::kOff;
 
@@ -169,11 +167,6 @@ void setup() {
   } else {
     Serial.println("Error setting up MDNS responder!");
   }
-  runner.Add(kRefreshMdnsDelay, []() {
-    if (!MDNS.begin(kMdnsName)) {
-      Serial.println("Error refreshing MDNS responder!");
-    }
-  });
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send_P(200, "text/html", index_html, htmlTemplateProcessor);
@@ -220,7 +213,6 @@ void setup() {
 
 void loop() {
   ArduinoOTA.handle();
-  runner.Run();
 
   switch(mode) {
     case Mode::kTwinkle:
