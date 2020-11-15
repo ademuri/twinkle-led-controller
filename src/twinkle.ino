@@ -16,7 +16,6 @@
 
 enum class Mode {
   kBright,
-  kDim,
   kTwinkle,
   kHalf,
   kOff,
@@ -47,6 +46,7 @@ PubSubClient pubSub(wifiClient);
 AsyncWebServer server(80);
 
 Mode mode = Mode::kOff;
+uint8_t max_brightness = 255;
 
 static const char* kMdnsName = "twinkle-controller";
 static const uint32_t kRefreshMdnsDelay = 60 * 1000;
@@ -103,19 +103,11 @@ String htmlTemplateProcessor(const String &var) {
   return String();
 }
 
-void lightsOff() {
-  mode = Mode::kOff;
+void lightsTwinkle() {
+  mode = Mode::kTwinkle;
   for (int j = 0; j < strands.size(); j++) {
     strands[j].brightness_a = 0;
     strands[j].brightness_b = 0;
-  }
-}
-
-void lightsBright() {
-  mode = Mode::kBright;
-  for (int i = 0; i < strands.size(); i++) {
-      strands[i].brightness_a = 255;
-      strands[i].brightness_b = 255;
   }
 }
 
@@ -131,10 +123,24 @@ void handleMqtt(const char* topic, byte* payload, unsigned int length) {
 
   if (doc.containsKey("state")) {
     if (strcmp(doc["state"], "ON") == 0) {
-      lightsBright();
+      mode = Mode::kBright;
     } else if (strcmp(doc["state"], "OFF") == 0) {
-      lightsOff();
+      mode = Mode::kOff;
     }
+  }
+
+  if (doc.containsKey("effect")) {
+    if (strcmp(doc["effect"], "twinkle") == 0) {
+      lightsTwinkle();
+    } else if (strcmp(doc["effect"], "half") == 0) {
+      mode = Mode::kHalf;
+    } else if (strcmp(doc["effect"], "normal") == 0) {
+      mode = Mode::kBright;
+    }
+  }
+
+  if (doc.containsKey("brightness")) {
+    max_brightness = doc["brightness"];
   }
 }
 
@@ -216,20 +222,13 @@ void setup() {
   // Note: use POST, not PUT, so that we don't have to include the regex
   // library for URL matching, which is large
   server.on("/bright", HTTP_POST, [](AsyncWebServerRequest *request) {
-    lightsBright();
-  });
-  server.on("/dim", HTTP_POST, [](AsyncWebServerRequest *request) {
-    mode = Mode::kDim;
+    mode = Mode::kBright;
   });
   server.on("/twinkle", HTTP_POST, [](AsyncWebServerRequest *request) {
-    for (int j = 0; j < strands.size(); j++) {
-      strands[j].brightness_a = 0;
-      strands[j].brightness_b = 0;
-    }
-    mode = Mode::kTwinkle;
+    lightsTwinkle();
   });
   server.on("/off", HTTP_POST, [](AsyncWebServerRequest *request) {
-    lightsOff();
+    mode = Mode::kOff;
   });
 
   mode = Mode::kHalf;
@@ -259,13 +258,26 @@ void loop() {
   pubSub.loop();
 
   switch(mode) {
+    case Mode::kBright:
+      for (int i = 0; i < strands.size(); i++) {
+          strands[i].brightness_a = max_brightness;
+          strands[i].brightness_b = max_brightness;
+      }
+      break;
     case Mode::kTwinkle:
       twinkle();
       break;
     case Mode::kHalf:
         for (int j = 0; j < strands.size(); j++) {
-          strands[j].brightness_b = 255;
+          strands[j].brightness_a = 0;
+          strands[j].brightness_b = max_brightness;
         }
+      break;
+    case Mode::kOff:
+      for (int j = 0; j < strands.size(); j++) {
+        strands[j].brightness_a = 0;
+        strands[j].brightness_b = 0;
+      }
       break;
     }
 }
