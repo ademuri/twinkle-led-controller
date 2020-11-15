@@ -60,32 +60,42 @@ static const char* kCommandTopic = "home/twinkle/command";
 portMUX_TYPE pwmTimerMux = portMUX_INITIALIZER_UNLOCKED;
 portMUX_TYPE bitBangTimerMux = portMUX_INITIALIZER_UNLOCKED;
 hw_timer_t * pwmTimer = nullptr;
-hw_timer_t * bitBangTimer = nullptr;
 
-static const double kPwmFreq = 78125;
-//static const double kPwmFreq = 78125.0 / 4.0;
+// This is ~the fastest frequency at which the PWM/LEDC will mostly match the
+// software PWM.
+static const double kPwmFreq = 78125.0 / 4.0;
 static const uint8_t kPwmResolution = 8;
 
 static const int kLedPin = 12;
 
 void IRAM_ATTR updatePwmLeds() {
   static uint8_t alternator = 0;
+  static uint8_t strand_index = 0;
+  static uint8_t pwm_counter = 0;
 
   portENTER_CRITICAL_ISR(&pwmTimerMux);
-  for (uint32_t i = 0; i < kNumPwmStrands; i++) {
-    Strand strand = strands[i];
+  updateBitBangLeds();
+
+  pwm_counter++;
+  if (pwm_counter > 8) {
+    pwm_counter = 0;
+    Strand strand = strands[strand_index];
     if (alternator == 0) {
-      ledcWrite(i, 0);
-      ledcWrite(kNumPwmStrands + i, strand.brightness_b);
+      ledcWrite(strand_index, 0);
+      ledcWrite(kNumPwmStrands + strand_index, strand.brightness_b);
     } else {
-      ledcWrite(kNumPwmStrands + i, 0);
-      ledcWrite(i, strand.brightness_a);
+      ledcWrite(kNumPwmStrands + strand_index, 0);
+      ledcWrite(strand_index, strand.brightness_a);
     }
-  }
-  if (alternator == 0) {
-    alternator = 1;
-  } else {
-    alternator = 0;
+    strand_index--;
+    if (strand_index > kNumPwmStrands) {
+      strand_index = kNumPwmStrands - 1;
+      if (alternator == 0) {
+        alternator = 1;
+      } else {
+        alternator = 0;
+      }
+    }
   }
 
   portEXIT_CRITICAL_ISR(&pwmTimerMux);
@@ -95,7 +105,6 @@ void IRAM_ATTR updateBitBangLeds() {
   static uint16_t pwm_counter = 0;
   static uint8_t alternator = 0;
 
-  portENTER_CRITICAL_ISR(&bitBangTimerMux);
   for (uint32_t i = kNumPwmStrands; i < strands.size(); i++) {
     Strand strand = strands[i];
     if (alternator == 0) {
@@ -115,8 +124,6 @@ void IRAM_ATTR updateBitBangLeds() {
       pwm_counter = 0;
     }
   }
-
-  portEXIT_CRITICAL_ISR(&bitBangTimerMux);
 }
 
 String htmlTemplateProcessor(const String &var) {
@@ -211,7 +218,6 @@ void setup() {
     .onStart([]() {
       // This interrupt interferes with the update process
       timerAlarmDisable(pwmTimer);
-      timerAlarmDisable(bitBangTimer);
 
       String type;
       if (ArduinoOTA.getCommand() == U_FLASH) {
@@ -233,7 +239,6 @@ void setup() {
   ArduinoOTA
     .onError([](ota_error_t error) {
       timerAlarmEnable(pwmTimer);
-      timerAlarmEnable(bitBangTimer);
 
       Serial.printf("Error[%u]: ", error);
       if (error == OTA_AUTH_ERROR) Serial.println("Auth Failed");
@@ -276,17 +281,9 @@ void setup() {
 
   pwmTimer = timerBegin(0, 240, true);
   timerAttachInterrupt(pwmTimer, &updatePwmLeds, true);
-  // Call at 5kHz
-  timerAlarmWrite(pwmTimer, 200, /* repeat */ true);
+  // Call at 100kHz
+  timerAlarmWrite(pwmTimer, 10, /* repeat */ true);
   timerAlarmEnable(pwmTimer);
-
-  // Note: 230 is relatively prime to 240, so that the two interrupts don't
-  // interfere with each other as much.
-  bitBangTimer = timerBegin(1, 230, true);
-  timerAttachInterrupt(bitBangTimer, &updateBitBangLeds, true);
-  // Call at ~100kHz
-  timerAlarmWrite(bitBangTimer, 10, /* repeat */ true);
-  timerAlarmEnable(bitBangTimer);
 
   // TODO: get MQTT server via MDNS rather than a hard-coded IP
   //pubSub.setServer(MDNS.queryHost("_home-assistant._tcp"), 1883);
