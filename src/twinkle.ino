@@ -52,6 +52,8 @@ uint8_t max_brightness = 255;
 static const char* kMdnsName = "twinkle-controller";
 static const uint32_t kRefreshMdnsDelay = 60 * 1000;
 
+static const char* kMqttUser = "mqtt";
+static const char* kMqttPassword = "mypassword";
 static const char* kCommandTopic = "home/twinkle/command";
 
 // Timer stuff, used for strand control. See the ESP32 timer example:
@@ -286,10 +288,10 @@ void setup() {
   timerAlarmEnable(pwmTimer);
 
   // TODO: get MQTT server via MDNS rather than a hard-coded IP
-  //pubSub.setServer(MDNS.queryHost("_home-assistant._tcp"), 1883);
-  pubSub.setServer("192.168.86.222", 1883);
+  //pubSub.setServer(MDNS.queryHost("home-assistant"), 1883);
+  pubSub.setServer("192.168.86.33", 1883);
   pubSub.setCallback(handleMqtt);
-  if (!pubSub.connect("twinkle")) {
+  if (!pubSub.connect("twinkle", kMqttUser, kMqttPassword)) {
     Serial.println("Failed to init MQTT");
   }
   pubSub.subscribe(kCommandTopic);
