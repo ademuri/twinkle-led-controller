@@ -329,8 +329,13 @@ void loop() {
 void twinkle() {
   const uint8_t brightness = (sin(millis()/1000.0) + 1.0)/2.0 * 256;
   for (int i = 0; i < strands.size(); i++) {
-    strands[i].brightness_a = brightness;
-    strands[i].brightness_b = 255-brightness;
+    if (i % 2 == 0) {
+      strands[i].brightness_a = brightness;
+      strands[i].brightness_b = 255-brightness;
+    } else {
+      strands[i].brightness_b = brightness;
+      strands[i].brightness_a = 255-brightness;
+    }
   }
 }
 
@@ -339,6 +344,14 @@ void twinkle2() {
   for (int i = 0; i < strands.size(); i++) {
     strands[i].brightness_a = sinValue > 0 ? sinValue * 255 : 0;
     strands[i].brightness_b = sinValue > 0 ? 0 : sinValue * -255;
+  }
+}
+
+void twinkle3() {
+  for (int i = 0; i < strands.size(); i++) {
+    const uint8_t brightness = (sin(millis()/1000.0 + i * 2 * 3.14 * 5.0 / 9.0) + 1.0)/2.0 * 256;
+    strands[i].brightness_a = brightness;
+    strands[i].brightness_b = 255-brightness;
   }
 }
 
