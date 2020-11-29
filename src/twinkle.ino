@@ -291,14 +291,25 @@ void setup() {
   //pubSub.setServer(MDNS.queryHost("home-assistant"), 1883);
   pubSub.setServer("192.168.86.33", 1883);
   pubSub.setCallback(handleMqtt);
-  if (!pubSub.connect("twinkle", kMqttUser, kMqttPassword)) {
-    Serial.println("Failed to init MQTT");
+  connect();
+}
+
+void connect() {
+  while (!pubSub.connected()) {
+    Serial.println("Connecting to MQTT");
+    if (!pubSub.connect("twinkle", kMqttUser, kMqttPassword)) {
+      Serial.println("Failed to init MQTT");
+      delay(5000);
+      continue;
+    }
+    pubSub.subscribe(kCommandTopic);
   }
-  pubSub.subscribe(kCommandTopic);
 }
 
 void loop() {
   ArduinoOTA.handle();
+
+  connect();
   pubSub.loop();
 
   switch(mode) {
