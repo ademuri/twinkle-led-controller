@@ -338,8 +338,8 @@ void loop() {
 }
 
 void twinkle() {
-  const uint8_t brightness = (sin(millis()/1000.0) + 1.0)/2.0 * 256;
   for (int i = 0; i < strands.size(); i++) {
+    const uint8_t brightness = (sin(millis()/1000.0 + i / 10.0) + 1.0)/2.0 * 256;
     if (i % 2 == 0) {
       strands[i].brightness_a = brightness;
       strands[i].brightness_b = 255-brightness;
